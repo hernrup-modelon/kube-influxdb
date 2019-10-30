@@ -64,7 +64,7 @@ config:
   outputs:
     - influxdb:
         urls:
-          - "http://tickstackcluster.com:30082"
+          - "http://192.168.30.20:30082"
         database: "telegraf"
         username: "admin"
         password: "admin"
@@ -72,15 +72,15 @@ config:
   inputs:
     - influxdb:
         urls:
-          - "http://tickstackcluster.com:30082/debug/vars"
+          - "http://192.168.30.20:30082/debug/vars"
         timeout: "5s"
     - kapacitor:
         urls:
-          - "http://tickstackcluster.com:30083"
+          - "http://192.168.30.20:30083"
         timeout: "5s"
     - kapacitor:
         urls:
-          - "http://tickstackcluster.com:30083/debug/vars"
+          - "http://192.168.30.20:30083/debug/vars"
         timeout: "5s"
     - cpu:
     - system:
@@ -90,38 +90,9 @@ config:
     - processes:
     - net:
     - swap:
-    - cloudwatch:
-        region: "us-east-1"
-        access_key: ""
-        secret_key: ""
-        period: "5m"
-        delay: "5m"
-        interval: "5m"
-        cache_ttl: "10m"
-        ratelimit: 10
-        namespace: "AWS/ELB"
-    - cloudwatch:
-        region: "us-east-1"
-        access_key: ""
-        secret_key: ""
-        period: "5m"
-        delay: "5m"
-        interval: "5m"
-        cache_ttl: "10m"
-        ratelimit: 10
-        namespace: "AWS/EC2"
-    - cloudwatch:
-        region: "us-east-1"
-        access_key: ""
-        secret_key: ""
-        period: "5m"
-        delay: "5m"
-        interval: "5m"
-        cache_ttl: "10m"
-        ratelimit: 10
-        namespace: "AWS/ELB"
+    
     - kube_inventory:
-        url: "http://tickstackcluster.com:"
+        url: "http://192.168.30.20:"
         namespace: ""
 ##      prometheus:
 ##        urls:

@@ -36,7 +36,7 @@ config:
     flush_jitter: "0s"
   outputs:
     - influxdb:
-        url: "http://tickstackcluster.com:30082"
+        url: "http://192.168.30.20:30082"
         database: "telegraf"
         retention_policy: ""
         timeout: "5s"
@@ -46,7 +46,7 @@ config:
         insecure_skip_verify: false
   inputs:
     - kubernetes:
-        url: "http://$HOSTIP:10255"
+        url: "http://$HOSTIP:10250"
         bearer_token: "/var/run/secrets/kubernetes.io/serviceaccount/token"
         insecure_skip_verify: true
     - docker: 
@@ -57,7 +57,7 @@ config:
         docker_label_exclude:
           - "annotation.kubernetes.io/*"
     - prometheus:
-        urls: ["http://tickstackcluster.com:30080/metrics","http://tickstackcluster.com:30081/metrics"]
+        urls: ["http://192.168.30.20:30080/metrics","http://192.168.30.20:30081/metrics"]
     - cpu:
     - system:
     - disk:
@@ -66,34 +66,3 @@ config:
     - processes:
     - net:
     - swap:
-    - cloudwatch:
-        region: "us-east-1"
-        access_key: ""
-        secret_key: ""
-        period: "5m"
-        delay: "5m"
-        interval: "5m"
-        cache_ttl: "10m"
-        ratelimit: 10
-        namespace: "AWS/ELB"
-    - cloudwatch:
-        region: "us-east-1"
-        access_key: ""
-        secret_key: ""
-        period: "5m"
-        delay: "5m"
-        interval: "5m"
-        cache_ttl: "10m"
-        ratelimit: 10
-        namespace: "AWS/EC2"
-    - cloudwatch:
-        region: "us-east-1"
-        access_key: ""
-        secret_key: ""
-        period: "5m"
-        delay: "5m"
-        interval: "5m"
-        cache_ttl: "10m"
-        ratelimit: 10
-        namespace: "AWS/ELB"
-  
